@@ -1,11 +1,9 @@
-export default function Hero() {
-    const name = 'Alex'
-    const weeks = 2604
-    const percetange = '45%'
+export default function Hero(props) {
+    const {name, data, percentage}  = props
     return (
         <section id="hero">
             <h3 className="text-large">
-                {name}, you have {weeks} weeks left. Make them count 🫡
+                {name}, you have {data.weeks} weeks left. Make them count 🫡
             </h3>
             <div className="btns-container">
                 <button>Not {name}?</button>
@@ -18,7 +16,7 @@ export default function Hero() {
                         <i className="fa-solid fa-baby" />
                         <h6 className="bar-label">Birth</h6>
                     </div>
-                    <h6>{percetange}</h6>
+                    <h6>{percentage}</h6>
                 </div>
                 <div>
                     <h6 className="bar-label">Death</h6>
