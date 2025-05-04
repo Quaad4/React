@@ -14,10 +14,10 @@ function App() {
 
   return (
     <Layout>
-        <Hero name={name} data={data} percentage={percentage}/>
-        <Clocks data={data}/>
-        <Calendar data={data} lifeExpectancy={lifeExpectancy}/>
-        <Summary />
+        <Hero name={name} data={data} percentage={percentage} />
+        <Clocks data={data} />
+        <Calendar data={data} lifeExpectancy={lifeExpectancy} />
+        <Summary lifeExpectancy={lifeExpectancy} birthDate={birthDate} />
     </Layout>
   )
 }

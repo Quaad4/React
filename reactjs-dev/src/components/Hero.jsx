@@ -1,5 +1,5 @@
 export default function Hero(props) {
-    const {name, data, percentage}  = props
+    const { name, data, percentage }  = props
     return (
         <section id="hero">
             <h3 className="text-large">
