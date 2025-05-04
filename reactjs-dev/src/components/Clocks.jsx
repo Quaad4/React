@@ -1,7 +1,7 @@
 import { getTimePercentage } from "../utils"
 
 function Clock(props) {
-    const {percent, title, data} = props
+    const { percent, title, data } = props
     return (
         <div className="card clock-card">
             <div className="circle" style={{transform: `rotate(${Math.round(percent)}deg)`}}>
@@ -16,7 +16,7 @@ function Clock(props) {
 }
 
 export default function Clocks(props) {
-    const {data} = props
+    const { data } = props
     const snapshot = getTimePercentage()
 
     return (
