@@ -4,6 +4,8 @@ import Hero from './components/Hero'
 import Calendar from './components/Calendar'
 import Summary from './components/Summary'
 import { calculateTimeLeft, getLifePercentageLived } from "./utils"
+import Portal from "./components/Portal"
+import Form from "./components/Form"
 
 function App() {
   const name = 'Alex'
@@ -11,9 +13,14 @@ function App() {
   const lifeExpectancy = 80
   const percentage = getLifePercentageLived(birthDate, lifeExpectancy)
   const data = calculateTimeLeft(birthDate, lifeExpectancy)
+  const showModal = false
 
   return (
     <Layout>
+        {showModal && (<Portal>
+            <Form />
+          </Portal>
+        )}
         <Hero name={name} data={data} percentage={percentage} />
         <Clocks data={data} />
         <Calendar data={data} lifeExpectancy={lifeExpectancy} />
