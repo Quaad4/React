@@ -1,6 +1,8 @@
 export default function Summary(props) {
     const { lifeExpectancy, birthDate } = props
-    const finalYear = parseInt(birthDate.split('-')[0]) + lifeExpectancy
+    const intDate = parseInt(birthDate.split('-')[0])
+    console.log(typeof(intDate))
+    const finalYear = intDate + lifeExpectancy
     return (
         <section id="summary">
             <div>
