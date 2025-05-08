@@ -52,7 +52,7 @@ export default function Form(props) {
             </div>
             <div>
                 <label>Life Expectancy (years)</label>
-                <input value={lifeExpectancy} onChange={(e) => { setLifeExpectancy(parseInt(e.target.value)) }} type='number' max={120} required />
+                <input value={lifeExpectancy} onChange={(e) => { setLifeExpectancy(e.target.value) }} type='number' max={120} required />
             </div>
             <button onClick={() => { handleUpdateData(name, `${year}-${month}-${day}`, lifeExpectancy) }}>
                 Save
