@@ -13,7 +13,7 @@ function App() {
   const lifeExpectancy = 80
   const percentage = getLifePercentageLived(birthDate, lifeExpectancy)
   const data = calculateTimeLeft(birthDate, lifeExpectancy)
-  const showModal = false
+  const showModal = true
 
   return (
     <Layout>
