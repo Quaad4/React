@@ -4,7 +4,6 @@ export function calculateTimeLeft(birthDate, lifeExpectancy) {
     const expectedDeath = new Date(birth.setFullYear(birth.getFullYear() + parseInt(lifeExpectancy)))
 
     if (now >= expectedDeath) {
-        console.log("You have surpassed the life expectancy!")
         return ({
             years: '-',
             months: '-',

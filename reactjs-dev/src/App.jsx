@@ -6,13 +6,14 @@ import Summary from './components/Summary'
 import { calculateTimeLeft, getLifePercentageLived } from "./utils"
 import Portal from "./components/Portal"
 import Form from "./components/Form"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 function App() {
   const [name, setName] = useState('Alex');
   const [birthDate, setBirthDate] = useState('1995-06-15')
   const [lifeExpectancy, setLifeExpectancy] = useState(80)
   const [showModal, setShowModal] = useState(false)
+  const [data, setData] = useState(calculateTimeLeft(birthDate, lifeExpectancy))
 
   function handleModalChange() {
     setShowModal(!showModal)
@@ -31,16 +32,36 @@ function App() {
     }
 
     //Saving to local storage
-    localStorage.setItem('formData', JSON.stringify({name: n, birthdate: b, lifeExpectancy: e}))
+    localStorage.setItem('formData', JSON.stringify({name: n, birthDate: b, lifeExpectancy: e}))
 
     setName(n)
     setBirthDate(b)
-    setLifeExpectancy(e)
+    setLifeExpectancy(parseInt(e))
     handleModalChange()
   }
 
   const percentage = getLifePercentageLived(birthDate, lifeExpectancy)
-  const data = calculateTimeLeft(birthDate, lifeExpectancy)
+
+  useEffect(() => {
+    if(!localStorage) {
+      return
+    }
+    if(localStorage.getItem('formData')) {
+      const {name: n, birthDate: b, lifeExpectancy: e} = JSON.parse(localStorage.getItem('formData'))
+      setName(n);
+      setBirthDate(b)
+      setLifeExpectancy(parseInt(e))
+    }
+  }, [])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setData(calculateTimeLeft(birthDate, lifeExpectancy))
+    }, 1000)
+    return () => {
+      clearInterval(interval)
+    }
+  }, [birthDate, lifeExpectancy])
 
   return (
     <Layout>
